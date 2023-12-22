@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Live video streaming</title>
+</head>
+
+<body>
+	<div class="image-wrapper">
+		<img id="image1" alt="Live Web Streaming1">
+		<img id="image2" alt="Live Web Streaming2">
+	</div>
+	<br>
+	<div id="colorData" class="image-wrapper"></div>
+	<center>
+		<a href="/switch-source/videoFile">From Video File</a>
+		<br><br>
+		<a href="/switch-source/webCamera">From Web Camera</a>
+		<br><br>
+		<a href="/change-fps/1">Change FPS to 1</a>
+		<br><br>
+		<a href="/change-fps/30">Change FPS to 30</a>
+		<br><br>
+		<a href="/change-fps/60">Change FPS to 60</a>
+	</center>
+
+
+	<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"
+		integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HFklTJBj/gBOV8G3HcKn4NfQblz"
+		crossorigin="anonymous"></script>
+
+	<script>
+		const socket = io.connect('http://localhost:8080/');
+
+		// socket.on('connect', () => console.info(socket.id));
+
+		socket.on('data', (data) => {
+			// get element
+			const ele1 = document.getElementById('image1');
+			const ele2 = document.getElementById('image2');
+			const ele3 = document.getElementById('colorData');
+
+			// set image size
+			ele1.style.width = "300px";
+			ele1.style.height = "300px";
+			ele2.style.width = "300px";
+			ele2.style.height = "300px";
+
+			// set new data
+			ele1.src = `data:image/jpeg;base64,${data[0]}`;
+			ele2.src = `data:image/jpeg;base64,${data[1]}`;
+			ele3.innerText = data[2];
+		});
+
+		// socket.on('image', (data) => {
+		// 	const ele = document.getElementById('image1');
+		// 	ele.style.width = "300px";
+		// 	ele.style.height = "300px";
+		// 	ele.src = `data:image/jpeg;base64,${data}`;
+		// });
+
+		// socket.on('grayImage', (data) => {
+		// 	const ele = document.getElementById('image2');
+		// 	ele.style.width = "300px";
+		// 	ele.style.height = "300px";
+		// 	ele.src = `data:image/jpeg;base64,${data}`;
+		// });
+
+		// socket.on('controlMessage', (data) => {
+		// 	const ele = document.getElementById('colorData');
+		// 	ele.innerText = data;
+		// });
+	</script>
+
+	<style>
+		body {
+			height: 100vh;
+			margin: 100px;
+		}
+
+		a {
+			font-weight: 700;
+		}
+
+		#colorData {
+			font-weight: 700;
+		}
+
+		.image-wrapper {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-bottom: 20px;
+			column-gap: 50px
+		}
+	</style>
+
+</html>
