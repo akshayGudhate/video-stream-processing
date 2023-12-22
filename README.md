@@ -36,7 +36,7 @@
 1. Implement a user interface for controlling video sources, FPS, and other settings.
 2. Explore advanced OpenCV techniques for color change, object detection, and motion tracking.
 3. Telemetry and Error handling. Also security majors if any.
-4. Add Asynchronous Architecture to handle data processing and server load efficiently.(Kafka or RabbitMQ)
+4. Add Asynchronous Architecture to handle data processing and server load efficiently. (Kafka or RabbitMQ)
 5. Add file compression can be used to manage huge scale.
 6. Image resolutions and processing might help to get a better User Experience.
 7. CDN and Cache can manage distributed users of multiple zones.
@@ -57,7 +57,7 @@ Steps:
 
 
 ### Conclusion:
-This project provides a solid foundation for Video processing and streaming. This basic setup will help you to create more complex applications using openCV.
+This project provides a solid foundation for Video processing and streaming. This basic setup will help you to create more complex applications using OpenCV.
 
 I hope this documentation provides a comprehensive overview of a project.
 Feel free to ask if you have any further questions or need additional information.
