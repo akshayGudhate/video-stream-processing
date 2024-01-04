@@ -71,7 +71,11 @@ router.get(
             }
 
             // redirect to home page
-            return res.redirect('/live');
+            // return res.redirect('/live');
+            return res.status(200).json({
+                info: env.constants.messageSuccess,
+                data: null
+            });
         } catch (err) {
             // log error
             console.error(err);
@@ -107,7 +111,11 @@ router.get(
             await config.changeFramesPerSecond(newFPS);
 
             // redirect to home page
-            return res.redirect('/live');
+            // return res.redirect('/live');
+            return res.status(200).json({
+                info: env.constants.messageSuccess,
+                data: null
+            });
         } catch (err) {
             // log error
             console.error(err);

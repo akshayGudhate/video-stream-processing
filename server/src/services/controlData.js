@@ -51,7 +51,7 @@ const saveToDB = async () => {
         // this will reduce the load on the db
         // as well as it will reduce the number of db calls
         //
-        await VideoFrameModel.insertMany(framesBatch);
+        // await VideoFrameModel.insertMany(framesBatch);
         console.info('--> Data saved to mongoDB...', framesBatch.length, 'records');
     }
 };

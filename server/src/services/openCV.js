@@ -40,7 +40,7 @@ const config = {
                 wCap = new cv.VideoCapture(0);
                 vSource = 0;
             } else if (sourceType === 1) {
-                wCap = new cv.VideoCapture(path.join(__dirname, '../../../../Downloads/Big Buck Bunny.mp4'));
+                wCap = new cv.VideoCapture(path.join(__dirname, '../../../../../Downloads/Big Buck Bunny.mp4'));
                 vSource = 1;
             } else {
                 throw new Error('Invalid source type');
@@ -59,7 +59,11 @@ const config = {
 // start streaming
 const startStreaming = (server) => {
     // set io server
-    const io = socketIO(server);
+    const io = socketIO(server, {
+        cors: {
+            origin: '*',
+        }
+    });
 
     // start streaming
     frameInterval = setInterval(

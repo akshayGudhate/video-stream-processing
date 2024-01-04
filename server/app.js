@@ -1,6 +1,7 @@
 const http = require('http');                       // http server
 const express = require('express');                 // express server
 const env = require('./environment');           	// environment file
+const cors = require("cors");                       // cors for react integration
 // cron
 const cron = require('./src/cron/job');             // cron job
 // router
@@ -25,7 +26,8 @@ const server = http.createServer(app);
 
 app.use(
     express.json(),                                 // middleware - body parser: json data
-    express.urlencoded({ extended: true })          // middleware - body parser: url-encoded data
+    express.urlencoded({ extended: true }),         // middleware - body parser: url-encoded data
+    cors()                                          // middleware - cors for react integration
 );
 
 
